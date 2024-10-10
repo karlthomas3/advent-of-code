@@ -1,0 +1,12 @@
+{
+  "name": "advent-of-code-2023",
+  "version": "1.0.0",
+  "description": "",
+  "module": "esnext",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
