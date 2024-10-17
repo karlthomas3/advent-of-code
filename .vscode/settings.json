@@ -1,4 +1,4 @@
 {
-	"deno.enable": true
-	// "github.copilot.editor.enableAutoCompletions": false
+	"deno.enable": true,
+	"github.copilot.editor.enableAutoCompletions": false
 }
