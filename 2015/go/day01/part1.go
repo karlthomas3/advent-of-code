@@ -11,3 +11,7 @@ func processPart1(input string) int {
 	}
 	return floor
 }
+
+func test() int {
+	return 1
+}
