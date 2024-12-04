@@ -1,6 +1,7 @@
 defmodule Aoc.Day02 do
   import Aoc.Utils
 
+  @spec part1(String.t()) :: :ok
   def part1(input) do
     input
     |> split_by_newline()
@@ -10,6 +11,7 @@ defmodule Aoc.Day02 do
     |> IO.puts()
   end
 
+  @spec part2(String.t()) :: :ok
   def part2(input) do
     input
     |> split_by_newline()
@@ -19,12 +21,14 @@ defmodule Aoc.Day02 do
     |> IO.puts()
   end
 
+  @spec split_nums(String.t()) :: [integer]
   defp split_nums(line) do
     line
     |> String.split(" ", trim: true)
     |> Enum.map(&String.to_integer/1)
   end
 
+  @spec safe?([integer]) :: integer
   defp safe?(nums) do
     if check_increasing(nums) || check_decreasing(nums) do
       1
@@ -33,6 +37,7 @@ defmodule Aoc.Day02 do
     end
   end
 
+  @spec safe2?([integer]) :: integer
   defp safe2?(nums) do
     if check_increasing(nums) || check_decreasing(nums) do
       1
@@ -45,6 +50,7 @@ defmodule Aoc.Day02 do
     end
   end
 
+  @spec check_increasing([integer]) :: boolean()
   defp check_increasing([_]), do: true
   defp check_increasing([]), do: true
 
@@ -58,6 +64,7 @@ defmodule Aoc.Day02 do
     end
   end
 
+  @spec check_decreasing([integer]) :: boolean()
   defp check_decreasing([_]), do: true
   defp check_decreasing([]), do: true
 
@@ -71,6 +78,7 @@ defmodule Aoc.Day02 do
     end
   end
 
+  @spec problem_dampener([integer]) :: boolean()
   defp problem_dampener(nums) do
     Enum.any?(0..(length(nums) - 1), fn i ->
       new_nums = List.delete_at(nums, i)

@@ -1,6 +1,7 @@
 defmodule Aoc.Day01 do
   import Aoc.Utils
 
+  @spec part1(String.t()) :: :ok
   def part1(input) do
     {left, right} =
       input
@@ -16,6 +17,7 @@ defmodule Aoc.Day01 do
     IO.puts(distance)
   end
 
+  @spec part2(String.t()) :: :ok
   def part2(input) do
     {left, right} =
       input
@@ -33,6 +35,7 @@ defmodule Aoc.Day01 do
     IO.puts(similarity)
   end
 
+  @spec split_columns(String.t()) :: {[integer], [integer]}
   defp split_columns(input) do
     input
     |> split_by_newline()

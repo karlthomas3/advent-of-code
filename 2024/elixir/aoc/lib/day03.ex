@@ -1,4 +1,5 @@
 defmodule Aoc.Day03 do
+  @spec part1(String.t()) :: :ok
   def part1(input) do
     regex = ~r/mul\((\d{1,3}),(\d{1,3})\)/
 
@@ -8,6 +9,7 @@ defmodule Aoc.Day03 do
     |> IO.puts()
   end
 
+  @spec part2(String.t()) :: :ok
   def part2(input) do
     regex = ~r/do\(\)|don't\(\)|mul\((\d{1,3}),(\d{1,3})\)/
     matches = Regex.scan(regex, input)
