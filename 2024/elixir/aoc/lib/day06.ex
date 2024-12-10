@@ -1,12 +1,11 @@
 defmodule Aoc.Day06 do
   import Aoc.Utils
 
+  @spec part1(String.t()) :: :ok
   def part1(input) do
     grid =
       input
       |> make_grid()
-
-    IO.inspect(grid)
 
     move(grid)
     |> Enum.flat_map(& &1)
@@ -48,6 +47,7 @@ defmodule Aoc.Day06 do
     end
   end
 
+  @spec find_guard([[String.t()]]) :: {{integer(), integer()}, String.t()}
   defp find_guard(grid) do
     Enum.find_value(grid, fn row ->
       case Enum.find_index(row, &(&1 in ["^", ">", "v", "<"])) do
@@ -57,6 +57,7 @@ defmodule Aoc.Day06 do
     end)
   end
 
+  @spec up([[String.t()]], {integer, integer}) :: [[String.t()]]
   defp up(grid, {row, col}) do
     cond do
       row == 0 ->
