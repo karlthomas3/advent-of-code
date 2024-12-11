@@ -20,16 +20,40 @@ defmodule Aoc.Day07 do
       end)
 
     lines
-    |> Enum.filter(&find_combinations/1)
+    |> Enum.filter(&find_combinations(&1, ["+", "*"]))
     |> Enum.map(fn {total, _nums} -> total end)
     |> Enum.sum()
     |> IO.puts()
   end
 
-  @spec find_combinations({integer, integer}) :: boolean()
-  defp find_combinations(line) do
+  @spec part2(String.t()) :: :ok
+  def part2(input) do
+    lines =
+      input
+      |> split_by_newline
+      |> Enum.map(fn line ->
+        [total_string, num_string] = String.split(line, ":")
+
+        total = String.to_integer(total_string)
+
+        nums =
+          num_string
+          |> String.split(" ", trim: true)
+          |> Enum.map(&String.to_integer/1)
+
+        {total, nums}
+      end)
+
+    lines
+    |> Enum.filter(&find_combinations(&1, ["+", "*", "||"]))
+    |> Enum.map(fn {total, _nums} -> total end)
+    |> Enum.sum()
+    |> IO.puts()
+  end
+
+  @spec find_combinations({integer, integer}, [String.t()]) :: boolean()
+  defp find_combinations(line, operators) do
     {total, nums} = line
-    operators = ["+", "*"]
     slots = length(nums) - 1
 
     generate_combinations(operators, slots)
@@ -58,4 +82,9 @@ defmodule Aoc.Day07 do
   @spec apply_operator(integer(), integer(), String.t()) :: integer()
   defp apply_operator(a, b, "+"), do: a + b
   defp apply_operator(a, b, "*"), do: a * b
+
+  defp apply_operator(a, b, "||") do
+    (Integer.to_string(a) <> Integer.to_string(b))
+    |> String.to_integer()
+  end
 end
