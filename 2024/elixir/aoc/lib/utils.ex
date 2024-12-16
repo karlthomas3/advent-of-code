@@ -3,4 +3,10 @@ defmodule Aoc.Utils do
     input
     |> String.split("\n", trim: true)
   end
+
+  def split_into_grid(input) do
+    input
+    |> split_by_newline()
+    |> Enum.map(&String.split(&1, "", trim: true))
+  end
 end
