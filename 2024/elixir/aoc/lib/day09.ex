@@ -1,4 +1,5 @@
 defmodule Aoc.Day09 do
+  @spec part1(String.t()) :: :ok
   def part1(input) do
     # test = "2333133121414131402"
 
@@ -11,18 +12,22 @@ defmodule Aoc.Day09 do
     |> IO.puts()
   end
 
+  @spec convert([String.t()]) :: [String.t()]
   defp convert(string_list) do
     convert(string_list, 0, [])
   end
 
+  @spec convert([String.t()]) :: [String.t()]
   defp convert([], _id, out_list), do: out_list
 
+  @spec convert([String.t()], integer(), [String.t()]) :: [String.t()]
   defp convert([h1], id, out_list) do
     id_str = Integer.to_string(id)
     repeated_list = List.duplicate(id_str, String.to_integer(h1))
     out_list ++ repeated_list
   end
 
+  @spec convert([String.t()], integer(), [String.t()]) :: [String.t()]
   defp convert([h1, h2 | t], id, out_list) do
     id_str = Integer.to_string(id)
     block = List.duplicate(id_str, String.to_integer(h1))
@@ -34,6 +39,7 @@ defmodule Aoc.Day09 do
     convert(t, id + 1, new_out)
   end
 
+  @spec swap_numbers_dots([String.t()]) :: [String.t()]
   defp swap_numbers_dots(list) do
     case swap_number_with_dot(list) do
       ^list -> list
@@ -41,6 +47,7 @@ defmodule Aoc.Day09 do
     end
   end
 
+  @spec swap_number_with_dot([String.t()]) :: [String.t()]
   defp swap_number_with_dot(list) do
     last_num_index =
       Enum.find_index(
@@ -62,17 +69,20 @@ defmodule Aoc.Day09 do
     end
   end
 
+  @spec checksum([String.t()]) :: integer()
   defp checksum(list), do: checksum(list, 0, 0)
 
+  @spec checksum([], integer(), integer()) :: integer()
   defp checksum([], _, acc), do: acc
 
+  @spec checksum([String.t()], integer(), integer()) :: integer()
   defp checksum([h | t], pos, acc) do
     if h == "." do
-      checksum(t, pos, acc)
+      checksum(t, pos + 1, acc)
+    else
+      id = String.to_integer(h)
+      num = id * pos
+      checksum(t, pos + 1, acc + num)
     end
-
-    id = String.to_integer(h)
-    num = id * pos
-    checksum(t, pos + 1, acc + num)
   end
 end
