@@ -23,7 +23,11 @@ defmodule Aoc.Utils do
 
   @spec value_from_grid_pos([[integer() | String.t()]], {integer(), integer()}) ::
           String.t() | integer()
-  def value_from_grid_pos(grid, {x, y}) do
-    Enum.at(Enum.at(grid, x), y)
+  def value_from_grid_pos(grid, {row, col}) do
+    if row < 0 or col < 0 or row >= length(grid) or col >= length(Enum.at(grid, 0)) do
+      nil
+    else
+      Enum.at(Enum.at(grid, row), col)
+    end
   end
 end
