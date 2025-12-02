@@ -1,19 +1,17 @@
 defmodule Aoc.Day01 do
   import Aoc.Utils
 
-  @spec part1(String.t()) :: :ok
+  @spec part1(String.t()) :: integer()
   def part1(input) do
     split_by_line(input)
     |> traverse(50)
     |> Enum.count(&(&1 == 0))
-    |> IO.puts()
   end
 
-  @spec part2(String.t()) :: :ok
+  @spec part2(String.t()) :: integer()
   def part2(input) do
     split_by_line(input)
     |> traverse2(50)
-    |> IO.puts()
   end
 
   defp rotate(str, cur) do

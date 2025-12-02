@@ -2,7 +2,7 @@ defmodule Aoc do
   def hello, do: :world
 
   def solve(day, part) do
-    input = File.read!(input_file(day))
+    input = File.read!(input_file(day)) |> String.trim()
 
     module =
       String.to_existing_atom("Elixir.Aoc.Day#{String.pad_leading("#{day}", 2, "0")}")
