@@ -1,0 +1,10 @@
+{
+  "project_name": "aoc",
+  "lsp": {
+    "elixir-ls": {
+      "settings": {
+        "projectDir": "elixir/aoc"
+      }
+    }
+  }
+}
