@@ -1,3 +1,7 @@
 defmodule Aoc.Utils do
-  def split_by_line(input), do: String.split(input, "\n", trim: true)
+  def split_by_line(input) do
+    input
+    |> String.trim()
+    |> String.split("\n", trim: true)
+  end
 end
