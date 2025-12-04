@@ -38,7 +38,7 @@ func processPart1(input string) int {
 	grid := buildGrid(input)
 
 	// iterate over grid and count movable @
-	for y := 0; y < len(grid); y++ {
+	for y := range len(grid) {
 		for x := 0; x < len(grid[0]); x++ {
 			if grid[y][x] == '@' {
 				if isMovable(x, y, grid) {
@@ -59,7 +59,7 @@ func processPart2(input string) int {
 		// keep track of changes
 		changes := 0
 		// iterate over grid
-		for y := 0; y < len(grid); y++ {
+		for y := range len(grid) {
 			for x := 0; x < len(grid[0]); x++ {
 				if grid[y][x] == '@' {
 					if isMovable(x, y, grid) {
