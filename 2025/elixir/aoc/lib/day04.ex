@@ -29,14 +29,6 @@ defmodule Aoc.Day04 do
     |> can_move()
   end
 
-  @spec make_grid([String.t()]) :: map()
-  defp make_grid(list) do
-    for {line, y} <- Enum.with_index(list),
-        {char, x} <- String.graphemes(line) |> Enum.with_index(),
-        into: %{},
-        do: {{x, y}, char}
-  end
-
   @spec movable?(map(), {integer(), integer()}) :: boolean()
   defp movable?(map, {x, y}) do
     # one in all directions
