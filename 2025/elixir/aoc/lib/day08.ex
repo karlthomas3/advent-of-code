@@ -40,9 +40,10 @@ defmodule Aoc.Day08 do
       end)
 
     pairs = find_closest(junctions)
+    initial_sets = Enum.map(junctions, &MapSet.new([&1]))
 
     result =
-      Enum.reduce_while(pairs, [], fn {_d, p, q}, sets ->
+      Enum.reduce_while(pairs, initial_sets, fn {_d, p, q}, sets ->
         new_sets = add_pair_to_sets(sets, p, q)
 
         cond do
