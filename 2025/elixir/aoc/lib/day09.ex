@@ -29,9 +29,9 @@ defmodule Aoc.Day09 do
     input && 42
   end
 
-  defp dist({x1, y1}, {x2, y2}) do
-    abs(x1 - x2) + abs(y1 - y2)
-  end
+  # defp dist({x1, y1}, {x2, y2}) do
+  #   abs(x1 - x2) + abs(y1 - y2)
+  # end
 
   defp rect_area({x1, y1}, {x2, y2}) do
     (abs(x1 - x2) + 1) * (abs(y1 - y2) + 1)

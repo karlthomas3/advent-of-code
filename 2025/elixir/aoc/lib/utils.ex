@@ -1,4 +1,5 @@
 defmodule Aoc.Utils do
+  @spec split_by_line(String.t()) :: [String.t()]
   def split_by_line(input) do
     input
     |> String.trim()
